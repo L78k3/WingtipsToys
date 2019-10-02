@@ -61,8 +61,8 @@ namespace WingtipToys
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-              ClientId = "000000000000.apps.googleusercontent.com",
-              ClientSecret = "00000000000"
+              ClientId = "540127238593-41mbpt614jk1s0n2u14krcl98q622tue.apps.googleusercontent.com",
+              ClientSecret = "kX1w_IbBKDZZahdHPG3-ckNM"
             });
         }
     }

@@ -3,17 +3,17 @@ using System.Data.Entity;
 
 namespace WingtipToys.Models
 {
-  public class ProductDatabaseInitializer : DropCreateDatabaseIfModelChanges<ProductContext>
-  {
-    protected override void Seed(ProductContext context)
+    public class ProductDatabaseInitializer : DropCreateDatabaseIfModelChanges<ProductContext>
     {
-      GetCategories().ForEach(c => context.Categories.Add(c));
-      GetProducts().ForEach(p => context.Products.Add(p));
-    }
+        protected override void Seed(ProductContext context)
+        {
+            GetCategories().ForEach(c => context.Categories.Add(c));
+            GetProducts().ForEach(p => context.Products.Add(p));
+        }
 
-    private static List<Category> GetCategories()
-    {
-      var categories = new List<Category> {
+        private static List<Category> GetCategories()
+        {
+            var categories = new List<Category> {
                 new Category
                 {
                     CategoryID = 1,
@@ -41,23 +41,23 @@ namespace WingtipToys.Models
                 },
             };
 
-      return categories;
-    }
+            return categories;
+        }
 
-    private static List<Product> GetProducts()
-    {
-      var products = new List<Product> {
+        private static List<Product> GetProducts()
+        {
+            var products = new List<Product> {
                 new Product
                 {
                     ProductID = 1,
                     ProductName = "Convertible Car",
-                    Description = "This convertible car is fast! The engine is powered by a neutrino based battery (not included)." + 
-                                  "Power it up and let it go!", 
+                    Description = "This convertible car is fast! The engine is powered by a neutrino based battery (not included)." +
+                                  "Power it up and let it go!",
                     ImagePath="carconvert.png",
                     UnitPrice = 22.50,
                     CategoryID = 1
                },
-                new Product 
+                new Product
                 {
                     ProductID = 2,
                     ProductName = "Old-time Car",
@@ -88,7 +88,7 @@ namespace WingtipToys.Models
                 {
                     ProductID = 5,
                     ProductName = "Old Style Racer",
-                    Description = "This old style racer can fly (with user assistance). Gravity controls flight duration." + 
+                    Description = "This old style racer can fly (with user assistance). Gravity controls flight duration." +
                                   "No batteries required.",
                     ImagePath="carracer.png",
                     UnitPrice = 34.95,
@@ -161,7 +161,7 @@ namespace WingtipToys.Models
                 {
                     ProductID = 13,
                     ProductName = "Big Ship",
-                    Description = "Is it a boat or a ship. Let this floating vehicle decide by using its " + 
+                    Description = "Is it a boat or a ship. Let this floating vehicle decide by using its " +
                                   "artifically intelligent computer brain!",
                     ImagePath="boatbig.png",
                     UnitPrice = 95.00,
@@ -171,7 +171,7 @@ namespace WingtipToys.Models
                 {
                     ProductID = 14,
                     ProductName = "Paper Boat",
-                    Description = "Floating fun for all! This toy boat can be assembled in seconds. Floats for minutes!" + 
+                    Description = "Floating fun for all! This toy boat can be assembled in seconds. Floats for minutes!" +
                                   "Some folding required.",
                     ImagePath="boatpaper.png",
                     UnitPrice = 4.95,
@@ -197,7 +197,7 @@ namespace WingtipToys.Models
                 }
             };
 
-      return products;
+            return products;
+        }
     }
-  }
 }

@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Owin;
 using WingtipToys.Models;
 
 namespace WingtipToys.Account
@@ -24,16 +23,17 @@ namespace WingtipToys.Account
                 //manager.SendEmail(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
 
                 IdentityHelper.SignIn(manager, user, isPersistent: false);
-
-                using (WingtipToys.Logic.ShoppingCartActions usersShoppingCart = new WingtipToys.Logic.ShoppingCartActions())
+                using (WingtipToys.Logic.ShoppingCartActions usersShoppingCart
+               = new WingtipToys.Logic.ShoppingCartActions())
                 {
-                  String cartId = usersShoppingCart.GetCartId();
-                  usersShoppingCart.MigrateCart(cartId, user.Id);
+                    String cartId = usersShoppingCart.GetCartId();
+                    usersShoppingCart.MigrateCart(cartId, user.Id);
                 }
+
 
                 IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
             }
-            else 
+            else
             {
                 ErrorMessage.Text = result.Errors.FirstOrDefault();
             }

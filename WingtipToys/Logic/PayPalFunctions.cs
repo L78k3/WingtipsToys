@@ -81,7 +81,7 @@ SIGNATURE, PWD };
        "successwithwarning"))
         {
             token = decoder["TOKEN"];
-            string ECURL = "https://" + host + "/cgi-bin/webscr?cmd=_expresscheckout" + "&token=" + token;
+            string ECURL = "https://" + host + "/cgi-bin/webscr?cmd=_xclick" + "&token=" + token;
             retMsg = ECURL;
             return true;
         }

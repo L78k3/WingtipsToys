@@ -1,16 +1,17 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.DataProtection;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using System;
 using WingtipToys.Models;
 
 namespace WingtipToys
 {
-    public partial class Startup
-    {
+    public partial class Startup {
 
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301883
         public void ConfigureAuth(IAppBuilder app)
@@ -60,8 +61,8 @@ namespace WingtipToys
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "540127238593-41mbpt614jk1s0n2u14krcl98q622tue.apps.googleusercontent.com",
-                ClientSecret = "kX1w_IbBKDZZahdHPG3-ckNM"
+              ClientId = "91953443339-cg0qsl9tp9k2d8u88k6i7ihj23ptkj89.apps.googleusercontent.com",
+              ClientSecret = "1hO2HutgMZB98F-r-nPYi_27"
             });
         }
     }

@@ -53,8 +53,8 @@
     <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=GBP"></script>
 
     <script>
-        var value = <%=lblTotal.Text.Replace("£","")%>;
-        var total = value.toString();
+        var x = <%=lblTotal.Text.Replace("£","")%>;
+        var total = x.toString(); 
         // Render the PayPal button into #paypal-button-container
         paypal.Buttons({
 

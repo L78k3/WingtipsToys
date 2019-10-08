@@ -50,9 +50,11 @@
     <div id="paypal-button-container"></div>
 
     <!-- Include the PayPal JavaScript SDK -->
-    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=GBP"></script>
 
     <script>
+        var value = <%=lblTotal.Text.Replace("£","")%>;
+        var total = value.toString();
         // Render the PayPal button into #paypal-button-container
         paypal.Buttons({
 
@@ -61,7 +63,7 @@
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            value: '0.01'
+                            value: total
                         }
                     }]
                 });

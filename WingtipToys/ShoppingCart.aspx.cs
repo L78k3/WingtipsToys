@@ -62,6 +62,8 @@ namespace WingtipToys
                 usersShoppingCart.UpdateShoppingCartDatabase(cartId, cartUpdates);
                 CartList.DataBind();
                 lblTotal.Text = String.Format("{0:c}", usersShoppingCart.GetTotal());
+                string paypalTotal = lblTotal.Text;
+                paypalTotal = paypalTotal.Substring(1);
                 return usersShoppingCart.GetCartItems();
             }
         }

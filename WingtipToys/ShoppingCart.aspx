@@ -38,6 +38,7 @@
       <td>
         <asp:Button ID="UpdateBtn" runat="server" Text="Update" OnClick="UpdateBtn_Click" />
       </td>
+        <!-- This si the old paypal checkout method. It's supposed to work, but it was deprecated sometime in 2017.
       <td>
         <asp:ImageButton ID="CheckoutImageBtn" runat="server" 
                       ImageUrl="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" 
@@ -45,6 +46,7 @@
                       OnClick="CheckoutBtn_Click" 
                       BackColor="Transparent" BorderWidth="0" />
       </td>
+        -->
       <td>
           <!-- Set up a container element for the button -->
     <div id="paypal-button-container"></div>

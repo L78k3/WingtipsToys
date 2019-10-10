@@ -38,14 +38,15 @@
       <td>
         <asp:Button ID="UpdateBtn" runat="server" Text="Update" OnClick="UpdateBtn_Click" />
       </td>
-      <td>
+      <!-- This is the old paypal button. we got it working, but it was deprecated in 2017.
+          <td>
         <asp:ImageButton ID="CheckoutImageBtn" runat="server" 
                       ImageUrl="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" 
                       Width="145" AlternateText="Check out with PayPal" 
                       OnClick="CheckoutBtn_Click" 
                       BackColor="Transparent" BorderWidth="0" />
       </td>
-      <td>
+      <td>-->
           <!-- Set up a container element for the button -->
     <div id="paypal-button-container"></div>
 
@@ -53,8 +54,8 @@
     <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=GBP"></script>
 
     <script>
-        var value = <%=lblTotal.Text.Replace("£","")%>;
-        var total = value.toString();
+        var x = <%=lblTotal.Text.Replace("£","")%>;
+        var total = x.toString();
         // Render the PayPal button into #paypal-button-container
         paypal.Buttons({
 
@@ -74,6 +75,7 @@
                 return actions.order.capture().then(function(details) {
                     // Show a success message to the buyer
                     alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                    window.location.replace("localhost:44300/checkoutReview.aspx");
                 });
             }
 

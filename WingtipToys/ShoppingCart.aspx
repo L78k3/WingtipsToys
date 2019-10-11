@@ -76,6 +76,23 @@
                 return actions.order.capture().then(function(details) {
                     // Show a success message to the buyer
                     alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                    console.log(details);
+                    function populate(frm, data) {
+                        $.each(data, function (key, value) {
+                            var ctrl = $('[name=' + key + ']', frm);
+                            switch (ctrl.prop("type")) {
+                                case "radio": case "checkbox":
+                                    ctrl.each(function () {
+                                        if ($(this).attr('value') == value) $(this).attr("checked", value);
+                                    });
+                                    break;
+                                default:
+                                    ctrl.val(value);
+                            }
+                        });
+                    }
+
+
                 });
             }
 

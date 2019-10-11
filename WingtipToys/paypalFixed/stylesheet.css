@@ -1,0 +1,305 @@
+
+#highlight 	{ background-image:url(spotlights.png);}
+#header 	{ background-image:url(header.png);}
+#header .pipelist li { border-left: 1px solid #1A72B9; }
+#header .pipelist a { color: #1A72B9;}
+#header .logo {	
+	background: url(logo.png);
+	width:150px; height:50px; top:18px;
+}
+
+html, body {
+	height: 100%;
+}
+
+body, p, h1, h2, h3, li, td {
+	font-family: 'Segoe UI', Verdana, Arial;
+}
+
+body {
+	color: #000000; 
+	margin:0; padding:0;
+	font-size : .8em;	
+	width:100%;
+}
+
+#wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -30px; /* the bottom margin is the negative value of the footer's height */
+}
+
+#footer, .push {
+	height: 30px; /* .push must be the same height as .footer */
+}
+
+#highlight {
+	background-repeat:no-repeat;
+	background-position:top left;
+	width:100%;
+	height:60px;
+}
+
+#header {
+	width:100%;
+	height:60px;
+	background-repeat:repeat-x;
+	background-position:top left;	
+	position:relative;
+}
+#header .logo {	
+	background-repeat:no-repeat;
+	background-position:top left;
+	text-indent:-9999px;
+	overflow:hidden;
+	left:15px;
+	position:absolute;
+	-ms-interpolation-mode:bicubic;
+}
+
+#header .pipelist {    
+    overflow: hidden;
+    margin-right:-5px;
+    padding-right:-5px;
+	position:absolute;
+	bottom:5px; 
+	right:10px;
+	font-size:.85em;
+}
+
+#header .pipelist ul {
+    list-style-type: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+}
+
+#header .pipelist li {
+    float: left;
+    line-height: 1.1em;
+    margin: 0 .7em 2px -.7em;
+    padding: 0 .7em 0 .7em;
+}
+
+#header .pipelist a {
+	text-decoration:none;
+}
+#header .pipelist a:hover {
+	text-decoration:underline;
+}
+
+#content {
+	text-align:left;	
+	padding:0 15px 0 15px;			
+	padding-bottom:40px;
+}
+
+#footer {	
+	width:100%;
+	background-color:whitesmoke;
+	border-top:1px solid gainsboro;	
+	font-size:.8em;
+	padding-top:8px;
+	padding-bottom:0px;
+	color:dimgray;	
+	white-space:nowrap;
+}
+
+img {
+	-ms-interpolation-mode:bicubic;
+}
+
+h1 {
+	font-weight : bold;
+	font-size : 1.3em;
+	margin-top:.7em;
+	margin-bottom: 1em;
+	border-bottom: 1px silver solid;
+	padding-bottom: 8px;
+	padding-top:0px;
+	color: #1A72B9;
+}
+h2 {
+	font-weight : bold;
+	font-size : 1.05em;
+	margin-bottom: 0.25em;
+	color: #1A72B9;
+}
+h3 {
+	font-weight : bold;
+	font-size : 1em;
+	margin-bottom: 0.25em;
+	color: #125095;
+}
+
+p {
+	margin:0px 0em 1em 0em;
+	line-height:1.5em;
+}
+		   
+li {
+	margin-bottom: 4pt;
+}
+		   
+a:active, a:link, a:visited {
+	text-decoration:underline;
+}
+
+a:hover		{
+	text-decoration:none;
+}
+
+
+table {
+	font-size: 1em; 
+	margin-top: 1em 0 1em 0;		
+	border-collapse:collapse;
+	width:90%;
+}
+
+tr {
+	vertical-align: top;	
+}
+
+th {
+  background-color: #EDF6FF; 
+  vertical-align: bottom;  
+  color:#215A8F;
+  padding:5px;
+  border-bottom:1px solid #90ADBC;
+}
+
+td {
+	vertical-align: top; 
+	margin-top: .25em;	
+	padding:10px;
+	border-bottom:1px solid #EDF6FF;
+}
+
+td, th {
+	text-align: left; 
+	padding-left:1em;  
+	border-right:2px solid white;
+}
+
+small {
+	font-size: .85em;
+}
+
+tt {
+	font-family: monospace;
+	font-size:1.1em;
+}
+
+pre {
+	font-family: Consolas, Monaco, 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace;
+	font-size: 1.02em;
+	background-color:#F7F7F7;
+	padding:1px 5px;
+	/* Wrap content in pre tags if too long */
+	overflow-x: auto; /* Use horizontal scroller if needed; for Firefox 2, not needed in Firefox 3 */
+	white-space: pre-wrap; /* css-3 */
+	white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+	white-space: -pre-wrap; /* Opera 4-6 */
+	white-space: -o-pre-wrap; /* Opera 7 */
+	word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+.syntax {
+	margin-top: 0em;
+	margin-left: 1em;
+	margin-right: 1em;
+	background-color: whitesmoke;
+}
+
+
+hr {
+	color: silver;
+	background-color: silver;
+  height: 1px;
+  border:none;
+}
+
+#toc a {
+	font-family: 'Segoe UI', Verdana, Arial !important;
+	text-decoration:none !important;
+}
+
+#toc a:hover {	
+	text-decoration:underline !important;
+}
+
+/* Style for RSBScript */
+.source .rsbkey { color: #047; font-weight: normal; } /* RSSBus Keyword */
+.source .nt { color: #000; font-weight: bold; } /* This is the close tag make it */
+.source .rsbattr { color: maroon; font-weight: bold; } /* RSSBus Attr name attr= and item= also in [ attr ] */
+.source .rsbattrf { color: maroon; font-weight: bold;} /* RSSBus Attr name in a formatter */
+.source .rsbbrace { color: #0000FF; font-weight: bold; } /* Color for the brace [ ] */
+.source .rsbform { color: green;}  /* RSSBus Formatter [ attr |.. ] */
+.source .rsbop { color: blue; font-weight: bold; } /* RSSBus Operation name */
+.source .s { color: dimgray; } /* Literal.String */
+.source .na { color: #333; font-weight: bold; } /* All the attribute name*/
+
+.source .hll { background-color: #ffffcc }
+.source .c { color: #408080; font-style: italic } /* Comment */
+.source .err { border: 1px solid #FF0000 } /* Error */
+.source .k { color: #008000; font-weight: bold } /* Keyword */
+.source .o { color: #666666 } /* Operator */
+.source .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.source .cp { color: #BC7A00 } /* Comment.Preproc */
+.source .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.source .cs { color: #408080; font-style: italic } /* Comment.Special */
+.source .gd { color: #A00000 } /* Generic.Deleted */
+.source .ge { font-style: italic } /* Generic.Emph */
+.source .gr { color: #FF0000 } /* Generic.Error */
+.source .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.source .gi { color: #00A000 } /* Generic.Inserted */
+.source .go { color: #808080 } /* Generic.Output */
+.source .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.source .gs { font-weight: bold } /* Generic.Strong */
+.source .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.source .gt { color: #0040D0 } /* Generic.Traceback */
+.source .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.source .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.source .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.source .kp { color: #008000 } /* Keyword.Pseudo */
+.source .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.source .kt { color: #B00040 } /* Keyword.Type */
+.source .m { color: #666666 } /* Literal.Number */
+
+.source .nb { color: #008000 } /* Name.Builtin */
+.source .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.source .no { color: #880000 } /* Name.Constant */
+.source .nd { color: #AA22FF } /* Name.Decorator */
+.source .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.source .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.source .nf { color: #0000FF } /* Name.Function */
+.source .nl { color: #A0A000 } /* Name.Label */
+.source .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.source .nt { color: #333; font-weight: normal } /* Name.Tag */
+.source .nv { color: #19177C } /* Name.Variable */
+.source .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.source .w { color: #bbbbbb } /* Text.Whitespace */
+.source .mf { color: #666666 } /* Literal.Number.Float */
+.source .mh { color: #666666 } /* Literal.Number.Hex */
+.source .mi { color: #666666 } /* Literal.Number.Integer */
+.source .mo { color: #666666 } /* Literal.Number.Oct */
+.source .sb { color: #BA2121 } /* Literal.String.Backtick */
+.source .sc { color: #BA2121 } /* Literal.String.Char */
+.source .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.source .s2 { color: #BA2121 } /* Literal.String.Double */
+.source .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.source .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.source .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.source .sx { color: #008000 } /* Literal.String.Other */
+.source .sr { color: #BB6688 } /* Literal.String.Regex */
+.source .s1 { color: #BA2121 } /* Literal.String.Single */
+.source .ss { color: #19177C } /* Literal.String.Symbol */
+.source .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.source .vc { color: #19177C } /* Name.Variable.Class */
+.source .vg { color: #19177C } /* Name.Variable.Global */
+.source .vi { color: #19177C } /* Name.Variable.Instance */
+.source .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+

@@ -32,6 +32,7 @@
             <asp:Label ID="lblTotal" runat="server" EnableViewState="false"></asp:Label>
         </strong> 
     </div>
+
     <br />
     <table> 
     <tr>
@@ -48,6 +49,19 @@
       </td>
         -->
       <td>
+    <form action="Checkout/CheckoutReview.aspx" method="post" id="checkoutForm">
+        <input type="text" name="username" id="username"/>
+        <input type="text" name="firstname" id="firstname" />
+        <input type="text" name="lastname" id="lastname"/>
+        <input type="text" name="address" id="address"/>
+        <input type="text" name="city" id="city"/>
+        <input type="text" name="state" id="state"/>
+        <input type="text" name="postalcode" id="postalcode" />
+        <input type="text" name="country" id="country"/>
+        <input type="text" name="email" id="email" />
+        <input type="text" name="total" id="total" />
+        <input type="submit" value="Submit" />
+    </form>
           <!-- Set up a container element for the button -->
     <div id="paypal-button-container"></div>
 
@@ -56,12 +70,12 @@
 
     <script>
         var x = <%=lblTotal.Text.Replace("£","")%>;
-        var total = x.toString(); 
+        var total = x.toString();
         // Render the PayPal button into #paypal-button-container
         paypal.Buttons({
 
             // Set up the transaction
-            createOrder: function(data, actions) {
+            createOrder: function (data, actions) {
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
@@ -72,26 +86,22 @@
             },
 
             // Finalize the transaction
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (details) {
                     // Show a success message to the buyer
                     alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                    console.log(details);
-                    function populate(frm, data) {
-                        $.each(data, function (key, value) {
-                            var ctrl = $('[name=' + key + ']', frm);
-                            switch (ctrl.prop("type")) {
-                                case "radio": case "checkbox":
-                                    ctrl.each(function () {
-                                        if ($(this).attr('value') == value) $(this).attr("checked", value);
-                                    });
-                                    break;
-                                default:
-                                    ctrl.val(value);
-                            }
-                        });
-                    }
-
+                    console.log(details.purchase_units[0].amount.value)
+                    document.getElementById('username').value = details.payer.payer_id;
+                    document.getElementById('firstname').value = details.payer.name.given_name;
+                    document.getElementById('lastname').value = details.payer.name.surname;
+                    document.getElementById('address').value = details.payer.address.address_line_1;
+                    document.getElementById('city').value = details.payer.address.admin_area_2;
+                    document.getElementById('state').value = details.payer.address.admin_area_1;
+                    document.getElementById('postalcode').value = details.payer.address.postal_code;
+                    document.getElementById('country').value = details.payer.address.country_code;
+                    document.getElementById('email').value = details.payer.email_address;
+                    document.getElementById('total').value = details.purchase_units[0].amount.value
+                    document.getElementById('checkoutForm').submit();
 
                 });
             }
@@ -102,4 +112,5 @@
       </td>
     </tr>
     </table>
+    
 </asp:Content>

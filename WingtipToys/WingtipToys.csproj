@@ -231,15 +231,7 @@
     <Content Include="Catalog\Images\Thumbs\Thumbs.db" />
     <Content Include="Checkout\Web.config" />
     <Content Include="Admin\Web.config" />
-    <Content Include="paypalFixed\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="paypalFixed\adaptivepay.aspx" />
-    <Content Include="paypalFixed\directpayment.aspx" />
-    <Content Include="paypalFixed\expresscheckout.aspx" />
-    <Content Include="paypalFixed\getbalance.aspx" />
-    <Content Include="paypalFixed\masspay.aspx" />
-    <Content Include="paypalFixed\stylesheet.css" />
-    <Content Include="paypalFixed\transactiondetails.aspx" />
     <Content Include="ProductDetails.aspx" />
     <Content Include="ProductList.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -492,30 +484,6 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductContext.cs" />
     <Compile Include="Models\ProductDatabaseInitializer.cs" />
-    <Compile Include="paypalFixed\adaptivepay.aspx.cs">
-      <DependentUpon>adaptivepay.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="paypalFixed\directpayment.aspx.cs">
-      <DependentUpon>directpayment.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="paypalFixed\expresscheckout.aspx.cs">
-      <DependentUpon>expresscheckout.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="paypalFixed\getbalance.aspx.cs">
-      <DependentUpon>getbalance.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="paypalFixed\masspay.aspx.cs">
-      <DependentUpon>masspay.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="paypalFixed\transactiondetails.aspx.cs">
-      <DependentUpon>transactiondetails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="ProductDetails.aspx.cs">
       <DependentUpon>ProductDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

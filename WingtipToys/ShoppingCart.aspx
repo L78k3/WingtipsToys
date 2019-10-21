@@ -49,7 +49,7 @@
       </td>
         -->
       <td>
-    <form action="Checkout/CheckoutReview.aspx" method="post" id="checkoutForm">
+    <form action="Checkout/CheckoutReview.aspx" method="post" id="checkoutForm" style="visibility:hidden">
         <input type="text" name="username" id="username"/>
         <input type="text" name="firstname" id="firstname" />
         <input type="text" name="lastname" id="lastname"/>

@@ -1,10 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using WingtipToys.Models;
+using System.Web;
 namespace WingtipToys.Checkout
 {
+
     public partial class CheckoutReview : System.Web.UI.Page
     {
+        public static string GetFromCookie(string cookieName, string keyName)
+        {
+            HttpCookie cookie = HttpContext.Current.Request.Cookies[cookieName];
+            if (cookie != null)
+            {
+                string val = (!String.IsNullOrEmpty(keyName)) ? cookie[keyName] : cookie.Value;
+                if (!String.IsNullOrEmpty(val)) return Uri.UnescapeDataString(val);
+            }
+            return null;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -13,44 +26,44 @@ namespace WingtipToys.Checkout
                 string retMsg = "";
                 string token = "";
                 string PayerID = "";
+
                 NVPCodec decoder = new NVPCodec();
-                token = Session["token"].ToString();
-                bool ret = payPalCaller.GetCheckoutDetails(token, ref PayerID, ref
-               decoder, ref retMsg);
-                if (ret)
+
+                //token = Session["token"].ToString();
+                //bool ret = payPalCaller.GetCheckoutDetails(token, ref PayerID, ref decoder, ref retMsg);
+                if (GetFromCookie("username", null) != null)
                 {
                     Session["payerId"] = PayerID;
                     var myOrder = new Order();
-                    myOrder.OrderDate =
-                   Convert.ToDateTime(decoder["TIMESTAMP"].ToString());
-                    myOrder.Username = User.Identity.Name;
-                    myOrder.FirstName = decoder["FIRSTNAME"].ToString();
-                    myOrder.LastName = decoder["LASTNAME"].ToString();
-                    myOrder.Address = decoder["SHIPTOSTREET"].ToString();
-                    myOrder.City = decoder["SHIPTOCITY"].ToString();
-                    myOrder.State = decoder["SHIPTOSTATE"].ToString();
-                    myOrder.PostalCode = decoder["SHIPTOZIP"].ToString();
-                    myOrder.Country = decoder["SHIPTOCOUNTRYCODE"].ToString();
-                    myOrder.Email = decoder["EMAIL"].ToString();
-                    myOrder.Total = Convert.ToDecimal(decoder["AMT"].ToString());
+                    myOrder.OrderDate =Convert.ToDateTime(GetFromCookie("timestamp", null));
+                    myOrder.Username = GetFromCookie("username", null);
+                    myOrder.FirstName = GetFromCookie("firstname", null);
+                    myOrder.LastName = GetFromCookie("lastname", null);
+                    myOrder.Address = GetFromCookie("address", null);
+                    myOrder.City = GetFromCookie("city", null);
+                    myOrder.State = GetFromCookie("state", null);
+                    myOrder.PostalCode = GetFromCookie("postalcode", null);
+                    myOrder.Country = GetFromCookie("country", null);
+                    myOrder.Email = GetFromCookie("email", null);
+                    myOrder.Total = Convert.ToDecimal(GetFromCookie("total", null));
                     // Verify total payment amount as set on CheckoutStart.aspx.
-                    try
-                    {
-                        decimal paymentAmountOnCheckout =
-                       Convert.ToDecimal(Session["payment_amt"].ToString());
-                        decimal paymentAmoutFromPayPal =
-                       Convert.ToDecimal(decoder["AMT"].ToString());
-                        if (paymentAmountOnCheckout != paymentAmoutFromPayPal)
-                        {
-                            Response.Redirect("CheckoutError.aspx?" +
-                           "Desc=Amount%20total%20mismatch.");
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        Response.Redirect("CheckoutError.aspx?" +
-                       "Desc=Amount%20total%20mismatch.");
-                    }
+                    //try
+                    //{
+                    //    decimal paymentAmountOnCheckout =
+                    //   Convert.ToDecimal(Session["payment_amt"].ToString());
+                    //    decimal paymentAmoutFromPayPal =
+                    //   Convert.ToDecimal(decoder["AMT"].ToString());
+                    //    if (paymentAmountOnCheckout != paymentAmoutFromPayPal)
+                    //    {
+                    //        Response.Redirect("CheckoutError.aspx?" +
+                    //       "Desc=Amount%20total%20mismatch.");
+                    //    }
+                    //}
+                    //catch (Exception)
+                    //{
+                    //    Response.Redirect("CheckoutError.aspx?" +
+                    //   "Desc=Amount%20total%20mismatch.");
+                    //}
                     // Get DB context.
                     ProductContext _db = new ProductContext();
                     // Add order to DB.

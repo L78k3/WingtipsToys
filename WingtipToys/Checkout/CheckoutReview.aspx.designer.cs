@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WingtipToys.Checkout {
-    
-    
-    public partial class CheckoutReview {
-        
+namespace WingtipToys.Checkout
+{
+
+
+    public partial class CheckoutReview
+    {
+
         /// <summary>
         /// OrderItemList control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace WingtipToys.Checkout {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView OrderItemList;
-        
+
         /// <summary>
         /// ShipInfo control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace WingtipToys.Checkout {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DetailsView ShipInfo;
-        
+
         /// <summary>
         /// CheckoutConfirm control.
         /// </summary>

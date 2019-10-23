@@ -24,20 +24,7 @@ GridLines="None" CellPadding="10" BorderStyle="None" CommandRowStyleBorderStyle=
  <ItemTemplate>
  <h3>Shipping Address:</h3>
  <br />
- <asp:Label ID="FirstName" runat="server" Text='<%#:
-Eval("FirstName") %>'></asp:Label>
- <asp:Label ID="LastName" runat="server" Text='<%#:
-Eval("LastName") %>'></asp:Label>
- <br />
- <asp:Label ID="Address" runat="server" Text='<%#:
-Eval("Address") %>'></asp:Label>
- <br />
- <asp:Label ID="City" runat="server" Text='<%#: Eval("City")
-%>'></asp:Label>
- <asp:Label ID="State" runat="server" Text='<%#: Eval("State")
-%>'></asp:Label>
- <asp:Label ID="PostalCode" runat="server" Text='<%#:
-Eval("PostalCode") %>'></asp:Label>
+ 
  <p></p>
  <h3>Order Total:</h3>
  <br />

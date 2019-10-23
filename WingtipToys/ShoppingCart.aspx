@@ -49,26 +49,36 @@
       </td>
         -->
       <td>
-    <form action="Checkout/CheckoutReview.aspx" method="post" id="checkoutForm" style="visibility:hidden">
-        <input type="text" name="username" id="username"/>
-        <input type="text" name="firstname" id="firstname" />
-        <input type="text" name="lastname" id="lastname"/>
-        <input type="text" name="address" id="address"/>
-        <input type="text" name="city" id="city"/>
-        <input type="text" name="state" id="state"/>
-        <input type="text" name="postalcode" id="postalcode" />
-        <input type="text" name="country" id="country"/>
-        <input type="text" name="email" id="email" />
-        <input type="text" name="total" id="total" />
-        <input type="submit" value="Submit" />
-    </form>
+    
           <!-- Set up a container element for the button -->
     <div id="paypal-button-container"></div>
-
-    <!-- Include the PayPal JavaScript SDK -->
+      </td>
+    </tr>
+    </table>
+        <input type="hidden" name="username" id="username"/>
+        <input type="hidden" name="firstname" id="firstname" />
+        <input type="hidden" name="lastname" id="lastname"/>
+        <input type="hidden" name="address" id="address"/>
+        <input type="hidden" name="city" id="city"/>
+        <input type="hidden" name="state" id="state"/>
+        <input type="hidden" name="postalcode" id="postalcode" />
+        <input type="hidden" name="country" id="country"/>
+        <input type="hidden" name="email" id="email" />
+        <input type="hidden" name="total" id="total" />
+        <button type="submit" formaction="https://localhost:44300/Checkout/CheckoutReview.aspx" formmethod="post" id="checkoutForm" style="visibility:hidden"></button>
+<!-- Include the PayPal JavaScript SDK -->
     <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=GBP"></script>
 
     <script>
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
         var x = <%=lblTotal.Text.Replace("£","")%>;
         var total = x.toString();
         // Render the PayPal button into #paypal-button-container
@@ -90,18 +100,36 @@
                 return actions.order.capture().then(function (details) {
                     // Show a success message to the buyer
                     alert('Transaction completed by ' + details.payer.name.given_name + '!');
-                    console.log(details.purchase_units[0].amount.value)
-                    document.getElementById('username').value = details.payer.payer_id;
-                    document.getElementById('firstname').value = details.payer.name.given_name;
-                    document.getElementById('lastname').value = details.payer.name.surname;
-                    document.getElementById('address').value = details.payer.address.address_line_1;
-                    document.getElementById('city').value = details.payer.address.admin_area_2;
-                    document.getElementById('state').value = details.payer.address.admin_area_1;
-                    document.getElementById('postalcode').value = details.payer.address.postal_code;
-                    document.getElementById('country').value = details.payer.address.country_code;
-                    document.getElementById('email').value = details.payer.email_address;
-                    document.getElementById('total').value = details.purchase_units[0].amount.value
-                    document.getElementById('checkoutForm').submit();
+                    console.log(details)
+                    //write shit to cookie, open next page, pull from cookie, profit
+                    setCookie('username', details.payer.payer_id)
+                    setCookie('firstname', details.payer.name.given_name)
+                    setCookie('lastname', details.payer.name.surname)
+                    setCookie('address', details.payer.address.address_line_1)
+                    setCookie('city', details.payer.address.admin_area_2)
+                    setCookie('state', details.payer.address.admin_area_1)
+                    setCookie('postalcode', details.payer.address.postal_code)
+                    setCookie('country', details.payer.address.country_code)
+                    setCookie('email', details.payer.email_address)
+                    setCookie('total', details.purchase_units[0].amount.value)
+                    setCookie('timestamp', details.update_time)
+                    setCookie('transactionID', details.id)
+
+                    window.location.href = "https://localhost:44300/checkout/checkoutreview";
+
+
+                    //document.open("https://localhost:44300/checkout/checkoutreview")
+                    //document.getElementById('username').value = details.payer.payer_id;
+                    //document.getElementById('firstname').value = details.payer.name.given_name;
+                    //document.getElementById('lastname').value = details.payer.name.surname;
+                    //document.getElementById('address').value = details.payer.address.address_line_1;
+                    //document.getElementById('city').value = details.payer.address.admin_area_2;
+                    //document.getElementById('state').value = details.payer.address.admin_area_1;
+                    //document.getElementById('postalcode').value = details.payer.address.postal_code;
+                    //document.getElementById('country').value = details.payer.address.country_code;
+                    //document.getElementById('email').value = details.payer.email_address;
+                    //document.getElementById('total').value = details.purchase_units[0].amount.value
+                    //document.getElementById('checkoutForm').submit();
 
                 });
             }
@@ -109,8 +137,4 @@
 
         }).render('#paypal-button-container');
     </script>
-      </td>
-    </tr>
-    </table>
-    
 </asp:Content>
